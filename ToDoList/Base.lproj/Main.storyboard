@@ -38,6 +38,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="kBB-9M-gqA" kind="show" identifier="moveToComplete" id="Gfp-2r-SZE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BEE-DJ-NTa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,6 +99,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3sl-Kw-3XM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1601.449275362319" y="98.4375"/>
+        </scene>
+        <!--Complete View Controller-->
+        <scene sceneID="Wb8-uq-1A1">
+            <objects>
+                <viewController id="kBB-9M-gqA" customClass="CompleteViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BY6-B6-3q2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pH-OQ-kja">
+                                <rect key="frame" x="20" y="88" width="374" height="173"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxY-ic-nx3">
+                                <rect key="frame" x="174" y="269" width="67" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Complete"/>
+                                <connections>
+                                    <action selector="completeButtonPressed:" destination="kBB-9M-gqA" eventType="touchUpInside" id="qTL-rF-lfF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="oYT-DN-Xii"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ml7-2F-FGU"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="1pH-OQ-kja" id="EmM-kV-r6Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IUI-pD-etd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="695.6521739130435" y="856.47321428571422"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oc3-0z-fi3">
