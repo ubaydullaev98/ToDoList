@@ -32,6 +32,9 @@ class ToDoListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = toDos[indexPath.row].name
+        if(toDos[indexPath.row].important==true){
+            cell.textLabel?.text = "‼️ " + (cell.textLabel?.text)!
+        }
         return cell
     }
     
