@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CreateToDoViewController: UIViewController {
     
@@ -21,10 +22,20 @@ class CreateToDoViewController: UIViewController {
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
+        
         if let name = toDoTextField.text{
-            let toDo = ToDo(name: name, important: importantSwitch.isOn)
-            toDoTableVC?.toDos.append(toDo)
-            toDoTableVC?.tableView.reloadData()
+            
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "ToDoCoreData", in: context)!
+            let newToDo = NSManagedObject(entity: entity, insertInto: context)
+            
+            newToDo.setValue(name, forKey: "name")
+            newToDo.setValue(importantSwitch.isOn, forKey: "important")
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+ //           let toDo = ToDo(name: name, important: importantSwitch.isOn)
+ //           toDoTableVC?.toDos.append(toDo)
+ //           toDoTableVC?.tableView.reloadData()
             navigationController?.popViewController(animated: true)
         }
         

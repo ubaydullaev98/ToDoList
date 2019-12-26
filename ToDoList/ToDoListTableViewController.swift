@@ -7,27 +7,46 @@
 //
 
 import UIKit
+import CoreData
 
 class ToDoListTableViewController: UITableViewController {
     
-    //var toDos : [ToDo] = []
     var toDos = [ToDo]()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let toDo1 = ToDo(name: "Walk the Dog", important: false)
-        let toDo2 = ToDo(name: "Buy Milk", important: true)
-        toDos = [toDo1,toDo2]
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getToDos()
+    }
+    
+    func getToDos(){
+        toDos.removeAll()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        //let entity = NSEntityDescription.entity(forEntityName: "ToDoCoreData", in: context)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDoCoreData")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+               //print(data.value(forKey: "name") as! String)
+                //print(data.value(forKey: "important") as! Bool)
+                let toDo = ToDo(name: data.value(forKey: "name") as! String, important: data.value(forKey: "important") as! Bool)
+                toDos.append(toDo)
+                tableView.reloadData()
+          }
+            
+        } catch {
+            
+            print("Failed")
+        }
         
     }
     
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return toDos.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
