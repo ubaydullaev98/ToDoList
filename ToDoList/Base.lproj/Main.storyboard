@@ -43,10 +43,10 @@
             </objects>
             <point key="canvasLocation" x="697.10144927536237" y="100.44642857142857"/>
         </scene>
-        <!--View Controller-->
+        <!--Create To Do View Controller-->
         <scene sceneID="trb-ed-C2d">
             <objects>
-                <viewController id="wZy-Xd-EJl" sceneMemberID="viewController">
+                <viewController id="wZy-Xd-EJl" customClass="CreateToDoViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mLD-62-bgN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,12 +79,19 @@
                                 <rect key="frame" x="192" y="475" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="wZy-Xd-EJl" eventType="touchUpInside" id="ZBi-oR-WSu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="BFA-8Y-aO1"/>
                     </view>
                     <navigationItem key="navigationItem" id="px9-Sn-BDc"/>
+                    <connections>
+                        <outlet property="importantSwitch" destination="62C-pI-ifJ" id="UMR-Fr-CBE"/>
+                        <outlet property="toDoTextField" destination="J1d-H5-aLI" id="ekV-oi-gXr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3sl-Kw-3XM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
